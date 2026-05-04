@@ -527,32 +527,19 @@
   display: inline-block;
 }
 
-/* tooltip */
-.skill-item::after {
-  content: attr(data-name);
-  position: absolute;
-  bottom: -35px;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-
-  background: var(--card);
-  color: var(--text);
-  padding: 6px 10px;
-  font-size: 0.7rem;
-  border-radius: 6px;
-  white-space: nowrap;
-
-  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
-  opacity: 0;
-  pointer-events: none;
-
-  transition: all 0.25s ease;
+.skill-item {
+  display: flex;
+  flex-direction: column; /* 🔥 ini yang penting */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
 }
 
-/* show tooltip */
-.skill-item:hover::after {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
+.skill-item span {
+  font-size: 0.75rem;
+  opacity: 0.75;
+  margin-top: 4px;
 }
 
 .contact {
@@ -608,3 +595,134 @@
   transform: scale(1.2);
 }
 
+.services {
+  padding-top: 80px;
+}
+
+/* container */
+.services-container {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* card base */
+.service-card {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 20px;
+  padding: 30px;
+
+  background: color-mix(in srgb, var(--card) 80%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  min-height: 220px; /* 🔥 penting */
+  display: flex;
+  align-items: center;
+}
+
+/* content */
+.service-content {
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  width: 100%;
+}
+
+/* icon */
+.service-content img {
+  width: 40px;
+  margin-bottom: 15px;
+}
+
+/* description hidden */
+.service-content p {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+/* 🔥 HOVER LOGIC */
+
+/* saat container di-hover */
+.services-container:hover .service-card {
+  flex: 0;
+  opacity: 0;
+  padding: 0;
+  border-width: 0;
+}
+
+/* card aktif */
+.services-container .service-card:hover {
+  flex: 1;
+  opacity: 1;
+  padding: 40px;
+  border-width: 1px;
+  transform: translateY(-5px);
+
+  box-shadow: 0 10px 40px rgba(56,189,248,0.15);
+}
+
+/* isi jadi kiri saat expand */
+.service-card:hover .service-content {
+  text-align: left;
+}
+
+/* tampilkan deskripsi */
+.service-card:hover p {
+  opacity: 1;
+  max-height: 200px;
+  transform: translateY(0);
+}
+
+/* title tetap di tengah */
+.service-content h3,
+.service-content img {
+  position: relative;
+  z-index: 2;
+}
+
+/* description jadi overlay */
+.service-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  position: relative;
+  width: 100%;
+}
+
+/* description */
+.service-content p {
+  opacity: 0;
+  transform: translateY(10px);
+
+  max-height: 0;
+  overflow: hidden;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    max-height 0.4s ease;
+}
+
+/* saat hover */
+.service-card:hover p {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100px; /* cukup untuk 2-3 baris */
+}
+
+/* saat hover muncul */
+.service-card:hover p {
+  opacity: 1;
+  transform: translateY(0);
+}
