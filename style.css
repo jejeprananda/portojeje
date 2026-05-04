@@ -1,0 +1,307 @@
+:root {
+    --bg: #0f172a;
+    --text: #e2e8f0;
+    --accent: #38bdf8;
+    --card: #1e293b;
+  }
+  
+  .light {
+    --bg: #f8fafc;
+    --text: #0f172a;
+    --accent: #0ea5e9;
+    --card: #e2e8f0;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  html {
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    transition: background 0.45s ease, color 0.4s ease;
+    scroll-behavior: smooth;
+  }
+
+  #site {
+    position: relative;
+  }
+
+  /* Navbar — tetap di atas semua, blur agar Vanta di area bawah nav tetap terasa */
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: color-mix(in srgb, var(--bg) 42%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    transition: background 0.45s ease;
+  }
+
+  /* Blok atas: Vanta hanya di sini (nama + foto + deskripsi) */
+  .site-head {
+    position: relative;
+    isolation: isolate;
+    padding-top: 100px;
+  }
+
+  #vanta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 200px;
+    overflow: hidden;
+  }
+
+  .site-head__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Transisi halus dari area Vanta ke solid --bg */
+  .site-head__fade {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    height: clamp(72px, 12vh, 160px);
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      color-mix(in srgb, var(--bg) 35%, transparent) 42%,
+      color-mix(in srgb, var(--bg) 78%, transparent) 72%,
+      var(--bg) 100%
+    );
+    transition: opacity 0.45s ease;
+  }
+
+  .page-main {
+    position: relative;
+    z-index: 1;
+    background: var(--bg);
+    transition: background 0.45s ease;
+  }
+  
+  .nav-brand {
+    line-height: 0;
+  }
+
+  .nav-brand img {
+    display: block;
+    height: 60px;
+    width: auto;
+    max-width: min(330px, 42.5vw);
+    object-fit: contain;
+  }
+  
+  .theme-switch {
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+  }
+
+  .theme-switch:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 999px;
+  }
+
+  .theme-switch__track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 56px;
+    height: 28px;
+    padding: 0 5px;
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    background: var(--card);
+    transition: background 0.3s ease;
+  }
+
+  .theme-switch__thumb {
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent);
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .theme-switch--light .theme-switch__thumb {
+    transform: translateY(-50%) translateX(26px);
+  }
+
+  .theme-switch__icon {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    opacity: 0.4;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .theme-switch:not(.theme-switch--light) .theme-switch__icon--moon,
+  .theme-switch.theme-switch--light .theme-switch__icon--sun {
+    opacity: 1;
+  }
+  
+  /* Section */
+  section {
+    padding: 80px 40px;
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  /* Hero */
+  .hero {
+    text-align: center;
+    animation: fadeUp 1s ease;
+  }
+
+  .site-head .hero {
+    padding-top: 36px;
+    padding-bottom: 56px;
+  }
+  
+  .hero h2 {
+    font-size: 2.5rem;
+  }
+  
+  .hero span {
+    color: var(--accent);
+  }
+
+  /* Intro — foto & bio di antara hero dan Experience */
+  .intro {
+    text-align: center;
+    padding-top: 32px;
+    padding-bottom: 80px;
+    animation: fadeUp 1s ease 0.15s both;
+  }
+
+  .site-head .intro {
+    padding-bottom: clamp(96px, 14vh, 140px);
+  }
+
+  .intro__photo {
+    display: flex;
+    justify-content: center;
+  }
+
+  .intro__photo-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    background: var(--card);
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.35);
+  }
+
+  .light .intro__photo-placeholder {
+    box-shadow: 0 12px 40px rgba(15, 23, 42, 0.12);
+  }
+
+  .intro__bio-card {
+    max-width: 560px;
+    margin: 28px auto 0;
+    padding: 22px 26px;
+    border-radius: 16px;
+    text-align: center;
+    background: color-mix(in srgb, var(--card) 68%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(15, 23, 42, 0.28);
+    transition: background 0.45s ease, border-color 0.45s ease, box-shadow 0.45s ease;
+  }
+
+  .light .intro__bio-card {
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+  }
+
+  .intro__bio {
+    margin: 0;
+    line-height: 1.65;
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 1;
+  }
+
+  @media (max-width: 480px) {
+    .intro__photo-placeholder {
+      width: 140px;
+      height: 140px;
+    }
+
+    .intro__bio-card {
+      padding: 18px 18px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: calc(100% - 8px);
+    }
+  }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Animation */
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 40px;
+    opacity: 0.6;
+  }
+
+  

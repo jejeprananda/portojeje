@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio</title>
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="site">
+
+<nav class="site-nav">
+  <h1 class="nav-brand">
+    <img src="img/logo-only.png" alt="MyPortfolio" width="270" height="72" />
+  </h1>
+  <button type="button" class="theme-switch" id="toggleBtn" role="switch" aria-checked="false" aria-label="Ganti mode terang atau gelap">
+    <span class="theme-switch__track">
+      <span class="theme-switch__icon theme-switch__icon--moon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </span>
+      <span class="theme-switch__thumb" aria-hidden="true"></span>
+      <span class="theme-switch__icon theme-switch__icon--sun" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </span>
+    </span>
+  </button>
+</nav>
+
+<header class="site-head">
+  <div id="vanta-bg" aria-hidden="true"></div>
+  <div class="site-head__inner">
+    <section class="hero">
+      <h2>Hello, I'm <span>Jessy Prananda Ismail</span></h2>
+      <p>Frontend Developer | Web Engineer</p>
+    </section>
+
+    <section class="intro" aria-label="Tentang saya">
+      <div class="intro__photo">
+        <div class="intro__photo-placeholder" role="presentation"></div>
+      </div>
+      <div class="intro__bio-card">
+        <p class="intro__bio">
+          Pengembang frontend yang fokus pada antarmuka yang rapi, aksesibel, dan performa yang baik.
+          Senang membangun produk yang dipakai banyak orang dan terus belajar tren web modern.
+        </p>
+      </div>
+    </section>
+  </div>
+  <div class="site-head__fade" aria-hidden="true"></div>
+</header>
+
+<main class="page-main">
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Frontend Developer - Government Project</h3>
+    <p>2022 - Present</p>
+    <p>Developed national-scale budgeting web applications used across institutions.</p>
+  </div>
+
+  <div class="card">
+    <h3>Web Developer</h3>
+    <p>2020 - 2022</p>
+    <p>Built responsive web apps and integrated APIs for enterprise systems.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+
+  <div class="card">
+    <h3>Budgeting System</h3>
+    <p>Modern web system for financial planning and monitoring.</p>
+  </div>
+
+  <div class="card">
+    <h3>Dashboard Analytics</h3>
+    <p>Interactive dashboard with real-time data visualization.</p>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  © 2026 - Your Name
+</footer>
+
+</div>
+
+<!-- JS: Three.js harus dimuat sebelum Vanta NET -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="js/vanta-nets.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
