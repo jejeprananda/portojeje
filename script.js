@@ -33,3 +33,52 @@ initVanta();
 
 window.addEventListener("resize", resizeVanta);
 window.addEventListener("load", resizeVanta);
+
+const track = document.getElementById("skillsTrack");
+
+const pauseAnimation = () => {
+  track.classList.add("paused");
+};
+
+const resumeAnimation = () => {
+  track.classList.remove("paused");
+};
+
+/* Scroll Fade Animation */
+const sections = document.querySelectorAll(".fade-section");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+sections.forEach(section => observer.observe(section));
+
+/* Stagger Fade Animation */
+const items = document.querySelectorAll(".fade-item");
+
+const observerItems = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const index = [...items].indexOf(el);
+
+      setTimeout(() => {
+        el.classList.add("show");
+      }, index * 120); // delay antar item
+
+      observer.unobserve(el);
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+items.forEach(item => observerItems.observe(item));
+
+
