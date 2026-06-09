@@ -313,7 +313,7 @@ HERO
 
 body.night .cover-day{
 
-    opacity:0;
+    opacity:1;
 }
 
 body.night .cover-night{
@@ -321,7 +321,7 @@ body.night .cover-night{
     opacity:1;
 }
 
-.cover-overlay{
+/* .cover-overlay{
 
     position:absolute;
 
@@ -336,7 +336,7 @@ body.night .cover-night{
       );
 
     z-index:3;
-}
+} */
 
 body.night .hero-cover {
 

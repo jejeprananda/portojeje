@@ -557,10 +557,14 @@
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  padding: 12px !important;
+  padding-left: 22px !important;
+  justify-content: center;
+  gap: 0;
 
-  padding: 10px 16px;
-  border-radius: 999px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
 
   background: color-mix(in srgb, var(--card) 70%, transparent);
   border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
@@ -569,14 +573,23 @@
   text-decoration: none;
   font-size: 0.85rem;
 
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-item span {
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.4s ease;
 }
 
 /* icon */
 .contact-item img {
-  width: 18px;
-  height: 18px;
+  width: 32px;
+  height: 32px;
   object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
 /* hover */
@@ -584,6 +597,16 @@
   transform: translateY(-3px);
   background: color-mix(in srgb, var(--accent) 15%, var(--card));
   border-color: var(--accent);
+  width: auto;
+  height: auto;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.contact-item:hover span {
+  max-width: 250px;
+  opacity: 1;
 }
 
 /* glow */
