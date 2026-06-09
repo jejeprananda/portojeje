@@ -81,4 +81,35 @@ const observerItems = new IntersectionObserver((entries) => {
 
 items.forEach(item => observerItems.observe(item));
 
+const switchBtn =
+document.getElementById("themeSwitch");
 
+const savedTheme =
+localStorage.getItem("theme");
+
+if(savedTheme === "night"){
+
+    document.body.classList.add("night");
+
+    switchBtn.innerHTML = "☀️";
+}
+
+switchBtn.addEventListener("click", () => {
+
+    const isNight =
+      document.body.classList.toggle("night");
+
+    switchBtn.innerHTML =
+      isNight ? "☀️" : "🌙";
+
+    localStorage.setItem(
+      "theme",
+      isNight ? "night" : "day"
+    );
+});
+
+document.body.classList.add("theme-changing");
+
+setTimeout(() => {
+    document.body.classList.remove("theme-changing");
+}, 1600);
